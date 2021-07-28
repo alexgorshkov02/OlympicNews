@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS OlympicNews
+
+CREATE DATABASE OlympicNews
