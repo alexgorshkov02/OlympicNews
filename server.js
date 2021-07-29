@@ -1,5 +1,6 @@
 const { News, User, Comment } = require("./models/index");
 
+
 const express = require("express");
 const sequelize = require("./config/connection");
 
