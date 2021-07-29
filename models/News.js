@@ -25,7 +25,7 @@ News.init(
       allowNull: false,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(1000),
       allowNull: false,
     },
   },
