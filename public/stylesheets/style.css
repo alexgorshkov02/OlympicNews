@@ -7,5 +7,21 @@ body, html {
     padding: 0; margin: 0; 
     font-family: sans-serif;
     color: #f4c20d;
-    background-color: #4885ed;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
 }
