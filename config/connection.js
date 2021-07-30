@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const apiKey = require('dotenv')
 
 require('dotenv').config();
 
