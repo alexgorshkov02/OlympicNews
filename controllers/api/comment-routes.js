@@ -15,6 +15,7 @@ router.post('/', withAuth, (req, res) => {
   Comment.create({
     comment_text: req.body.comment_text,
     user_id: req.session.user_id,
+    // DO THESE NEWS_IDs NEED TO BE CHANGED TO POST_ID?
     news_id: req.body.news_id
   })
     .then(dbCommentData => res.json(dbCommentData))
