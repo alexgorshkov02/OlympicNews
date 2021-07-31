@@ -23,9 +23,7 @@ router.get("/", (req, res) => {
     ],
   })
     .then((dbNewsData) => {
-      console.log("Test1: ", dbNewsData);
       const news = dbNewsData.map((news) => news.get({ plain: true }));
-      console.log("Test2: ", news);
       res.render("homepage", {
         news,
       });
