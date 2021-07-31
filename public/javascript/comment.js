@@ -62,3 +62,7 @@ async function removeComment(event) {
 }
 
 document.querySelector('.comment-form').addEventListener('delete', removeComment);
+
+
+// Edit Comment
+// ================================================================================
