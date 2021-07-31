@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { Comment } = require('../../models');
-const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
   Comment.findAll()
@@ -11,12 +10,13 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/:id', withAuth, (req, res) => {
+router.get()
+
+router.post('/:id', (req, res) => {
   Comment.create({
     comment_text: req.body.comment_text,
     // Temp solution
     user_id: 1,
-    // DO THESE NEWS_IDs NEED TO BE CHANGED TO POST_ID?
     news_id: req.params.id
   })
     .then(dbCommentData => res.json(dbCommentData))
@@ -45,8 +45,7 @@ router.put('/:id', (req, res) => {
   });
 });
 
-
-router.delete('/:id', withAuth, (req, res) => {
+router.delete('/:id', (req, res) => {
   Comment.destroy({
     where: {
       id: req.params.id
