@@ -11,12 +11,13 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/', withAuth, (req, res) => {
+router.post('/:id', withAuth, (req, res) => {
   Comment.create({
     comment_text: req.body.comment_text,
-    user_id: req.session.user_id,
+    // Temp solution
+    user_id: 1,
     // DO THESE NEWS_IDs NEED TO BE CHANGED TO POST_ID?
-    news_id: req.body.news_id
+    news_id: req.params.id
   })
     .then(dbCommentData => res.json(dbCommentData))
     .catch(err => {

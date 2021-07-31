@@ -3,8 +3,7 @@ const sequelize = require("../config/connection");
 const { News } = require("../models");
 
 // get all news for homepage
-//TODO: Change to "/". Propogate the data to the homepage.
-router.get("/test", (req, res) => {
+router.get("/", (req, res) => {
   console.log("======================");
   News.findAll({
     attributes: [
@@ -21,13 +20,9 @@ router.get("/test", (req, res) => {
   })
     .then((dbNewsData) => {
       const news = dbNewsData.map((news) => news.get({ plain: true }));
-      console.log(news);
-
-      //TODO: Implement the render part. Now send res.json back temporary
-      // res.render("homepage", {
-      //   news
-      // });
-      res.json(news);
+      res.render("homepage", {
+        news
+      });
     })
     .catch((err) => {
       console.log(err);
