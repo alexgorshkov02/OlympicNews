@@ -14,7 +14,7 @@ News.init(
       autoIncrement: true,
     },
     image_url: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(1000),
       allowNull: false,
       validate: {
         isURL: true,

@@ -10,7 +10,8 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get()
+// This has crashed the app. TODO: Check why it is here. 
+// router.get()
 
 router.post('/:id', (req, res) => {
   Comment.create({
