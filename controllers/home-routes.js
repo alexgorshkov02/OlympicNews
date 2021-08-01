@@ -7,36 +7,7 @@ const NewsAPI = require("newsapi");
 const newsapi = new NewsAPI(process.env.API_KEY);
 
 // get all news for homepage
-router.get("/", (req, res) => {
-  console.log("======================");
-  News.findAll({
-    attributes: [
-      "image_url",
-      "title",
-      "description",
-      [
-        sequelize.literal(
-          "(SELECT COUNT(*) FROM comment WHERE news.id = comment.news_id)"
-        ),
-        "comment_count",
-      ],
-    ],
-    order: [["id", "DESC"]],
-  })
-    .then((dbNewsData) => {
-      const news = dbNewsData.map((news) => news.get({ plain: true }));
-      res.render("homepage", {
-        news,
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
-// Update the database with new news
-router.get("/refresh-news", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     // Get all existing news
     const allExistingNewsRaw = await News.findAll({
@@ -63,12 +34,31 @@ router.get("/refresh-news", async (req, res) => {
         description,
       }));
 
-    console.log("TTTTTTTTTTTTTTT: ", newsDataRemote);
+    // console.log("newsDataRemote: ", newsDataRemote);
 
     // Add new news to database
-    News.bulkCreate(newsDataRemote);
+    await News.bulkCreate(newsDataRemote);
 
-    res.send("ok");
+    const dbNewsData = await News.findAll({
+      attributes: [
+        "image_url",
+        "title",
+        "description",
+        [
+          sequelize.literal(
+            "(SELECT COUNT(*) FROM comment WHERE news.id = comment.news_id)"
+          ),
+          "comment_count",
+        ],
+      ],
+      order: [["id", "DESC"]],
+    });
+
+    const news = dbNewsData.map((news) => news.get({ plain: true }));
+
+    res.render("homepage", {
+      news,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
