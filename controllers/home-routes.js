@@ -27,7 +27,7 @@ router.get("/", async (req, res) => {
 
     // Check if a title exists in the existing database. If not, new news will be added
     const newsDataRemote = newsRawRemote.articles
-      .filter((article) => !allExistingNewsTitles.includes(article.title))
+      .filter((article) => !allExistingNewsTitles.includes(article.title) && article.urlToImage !== null && article.title !== null && article.description !== null )
       .map(({ urlToImage, title, description }) => ({
         image_url: urlToImage,
         title,
