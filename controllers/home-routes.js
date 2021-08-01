@@ -2,7 +2,7 @@ const router = require("express").Router();
 const sequelize = require("../config/connection");
 const { News } = require("../models");
 
-require('dotenv').config();
+require("dotenv").config();
 const NewsAPI = require("newsapi");
 const newsapi = new NewsAPI(process.env.API_KEY);
 
@@ -21,6 +21,7 @@ router.get("/", (req, res) => {
         "comment_count",
       ],
     ],
+    order: [["id", "DESC"]],
   })
     .then((dbNewsData) => {
       const news = dbNewsData.map((news) => news.get({ plain: true }));
@@ -35,44 +36,43 @@ router.get("/", (req, res) => {
 });
 
 // Update the database with new news
-router.post("/refresh-news", (req, res) => {
-  // News.findAll({
-  //   attributes: [
-  //     "image_url",
-  //     "title",
-  //     "description"
-  //   ],
-  // })
+router.get("/refresh-news", async (req, res) => {
+  try {
+    // Get all existing news
+    const allExistingNewsRaw = await News.findAll({
+      attributes: ["image_url", "title", "description"],
+    });
 
-  // To query everything
-  newsapi.v2
-    .everything({
+    // Get all title from the existing news
+    const allExistingNewsTitles = allExistingNewsRaw.map((news) => news.title);
+    // console.log(allExistingNews);
+
+    // Get all news about olympic games from the newsapi
+    const newsRawRemote = await newsapi.v2.everything({
       q: "olympic games",
       language: "en",
       from: "2021-07-20",
-    })
-    .then((rawNewsData) => {
-      // console.log(rawNewsData);
-      const newsAllData = Object.values(rawNewsData.articles);
-      const newsNecessaryData = newsAllData.map(item => {
-        return {
-          image_url: item.urlToImage,
-          title: item.title,
-          description: item.description
-        }
-      })
-      // console.log("toInsertBefore: ", newsNecessaryData);
-      return newsNecessaryData;
-    }).then(dbNewsData => {
-      // console.log("toInsertAfter: ", dbNewsData);
-      News.bulkCreate(dbNewsData);
-      
-      return dbNewsData;
-    }).then(test =>res.json(test))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
     });
+
+    // Check if a title exists in the existing database. If not, new news will be added
+    const newsDataRemote = newsRawRemote.articles
+      .filter((article) => !allExistingNewsTitles.includes(article.title))
+      .map(({ urlToImage, title, description }) => ({
+        image_url: urlToImage,
+        title,
+        description,
+      }));
+
+    console.log("TTTTTTTTTTTTTTT: ", newsDataRemote);
+
+    // Add new news to database
+    News.bulkCreate(newsDataRemote);
+
+    res.send("ok");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 router.get("/login", (req, res) => {
