@@ -55,10 +55,16 @@ router.get("/", async (req, res) => {
     });
 
     const news = dbNewsData.map((news) => news.get({ plain: true }));
+    if (req.session.loggedIn) {
+    res.render("homepage", 
+      { news, loggedIn: true }
+    );
+    } else {
+      res.render("homepage", 
+      { news }
+    );
+    }
 
-    res.render("homepage", {
-      news,
-    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -66,7 +72,15 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/login", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
   res.render("login");
+});
+
+router.get("/signup", (req, res) => {
+  res.render("signup");
 });
 
 module.exports = router;
