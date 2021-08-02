@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const { Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
   Comment.findAll()
     .then(dbCommentData => res.json(dbCommentData))
     .catch(err => {
@@ -10,15 +11,11 @@ router.get('/', (req, res) => {
     });
 });
 
-// This has crashed the app. TODO: Check why it is here. 
-// router.get()
-
-router.post('/:id', (req, res) => {
+router.post('/', withAuth, (req, res) => {
   Comment.create({
     comment_text: req.body.comment_text,
-    // Temp solution
-    user_id: 1,
-    news_id: req.params.id
+    user_id: req.session.user_id,
+    news_id: req.body.news_id
   })
     .then(dbCommentData => res.json(dbCommentData))
     .catch(err => {
@@ -27,7 +24,7 @@ router.post('/:id', (req, res) => {
     });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
   Comment.update(req.body, {
     where: {
       id: req.params.id
@@ -46,7 +43,7 @@ router.put('/:id', (req, res) => {
   });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
   Comment.destroy({
     where: {
       id: req.params.id
