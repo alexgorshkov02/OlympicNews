@@ -1,13 +1,13 @@
 const router = require('express').Router();
-const dashboardRoutes = require('./dashboard-routes');
 
 // requires new api folder with comment-routes.js
-const apiRoutes = require('./api/comment-routes.js');
+const apiRoutes = require('./api/');
+const dashboardRoutes = require('./dashboard-routes');
+const homeRoutes = require('./home-routes');
 
-const homeRoutes = require('./home-routes.js');
 
+router.use('/api', apiRoutes);
 router.use('/dashboard', dashboardRoutes);
 router.use('/', homeRoutes);
-router.use('/api', apiRoutes);
 
 module.exports = router;
