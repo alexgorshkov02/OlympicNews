@@ -40,13 +40,21 @@ router.post("/", (req, res) => {
       .catch((err) => {
         console.log(err);
         res.status(500).json(err);
+
+        // TODO: Check if it is posible to implement a custom response. The message is not displayed on the client side
+        //Duplicate
+    //     if (err.original.errno === 1062) {
+    //         res.json("User with the same name already exists. Please create a different username");
+    //     } else{
+    //     res.status(500).json(err);
+    // }
+
       });
   });
   
 
 router.post('/login', (req, res) => {
     // expects {username and password}
-    console.log("running");
     User.findOne({
         where: {
             username: req.body.username
@@ -71,6 +79,7 @@ router.post('/login', (req, res) => {
             req.session.username = dbUserData.username;
             req.session.loggedIn = true;
 
+            // console.log("TEST!!!: ", req.session.username)
             res.json({ user: dbUserData, message: 'You are now logged in! '});
         });
     });
