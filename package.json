@@ -1,9 +1,15 @@
 {
-  "name": "OlympicNews",
+  "name": "olympicnews",
   "version": "1.0.0",
   "description": "Use Node.js and Express.js to create a RESTful API.",
   "main": "server.js",
   "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.2",
+    "express-session": "^1.17.2",
+    "express-session-sequelize": "^2.3.0",
+    "handlebars": "^4.7.7",
     "sequelize": "^6.6.5",
     "sessions": "^0.0.2-7"
   },
