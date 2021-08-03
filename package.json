@@ -1,0 +1,26 @@
+{
+  "name": "OlympicNews",
+  "version": "1.0.0",
+  "description": "Use Node.js and Express.js to create a RESTful API.",
+  "main": "server.js",
+  "dependencies": {
+    "sequelize": "^6.6.5",
+    "sessions": "^0.0.2-7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jxser/OlympicNews.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jxser/OlympicNews/issues"
+  },
+  "homepage": "https://github.com/Jxser/OlympicNews#readme"
+}
