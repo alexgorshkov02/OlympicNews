@@ -3,7 +3,7 @@ const { User, Comment, News } = require("../models");
 // TODO: Why withAuth does not work for the GET route???
 const withAuth = require("../utils/auth");
 
-router.get("/", async (req, res) => {
+router.get("/", withAuth, async (req, res) => {
   try {
     const currentUserData = await User.findOne({
       attributes: ["id"],

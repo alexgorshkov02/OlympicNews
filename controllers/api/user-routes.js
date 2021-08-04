@@ -75,11 +75,11 @@ router.post('/login', (req, res) => {
         }
         
         req.session.save(() => {
-            req.session.user_id = dbUserData.isSoftDeleted;
+            req.session.user_id = dbUserData.id;;
             req.session.username = dbUserData.username;
             req.session.loggedIn = true;
 
-            // console.log("TEST!!!: ", req.session.username)
+            console.log("TEST!!!: ", req.session.user_id )
             res.json({ user: dbUserData, message: 'You are now logged in! '});
         });
     });
