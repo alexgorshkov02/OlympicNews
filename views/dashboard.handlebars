@@ -1,12 +1,9 @@
 <section>
 
   <h2>All your comments:</h2>
-  {{#each allNewsAndComments}}
+  <div class="news">
 
-    <div>{{newsTitle}}</div>
-    {{#each comments}}
-      <p>{{this}}</p>
-    {{/each}}
-
-  {{/each}}
+{{#list allNewsAndCommentsToDisplay}}
+{{/list}}
+  </div>
 </section>
