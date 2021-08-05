@@ -1,6 +1,6 @@
 # [Olympic News] (https://olympicnews.herokuapp.com/)
 
-![index] (C:\Users\benth\OneDrive\Pictures\Photos\2021-08-04.png)
+![index] (OlympicNews\progress-screenshots\Screen Shot 2021-08-05 at 6.53.37 PM.png?raw=true)
 
 The website for all current Olympic News as it unfolds during the Olympic Games.
 
