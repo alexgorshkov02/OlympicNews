@@ -1,12 +1,12 @@
 <section>
 
   <h2>All your comments:</h2>
-  {{#each allNewsAndComments}}
+  <div class="news">
 
-    <div>{{newsTitle}}</div>
-    {{#each comments}}
-      <p>{{this}}</p>
-    {{/each}}
-
-  {{/each}}
+{{#list allNewsAndCommentsToDisplay}}
+{{/list}}
+  </div>
 </section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/javascript/dashboard.js"></script>
