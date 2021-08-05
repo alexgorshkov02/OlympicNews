@@ -25,6 +25,8 @@ router.post('/', withAuth, (req, res) => {
 });
 
 router.put('/:id', withAuth, (req, res) => {
+  console.log("afdsgsdgsdg!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!: ", req.params.id)
+  console.log("req.body: ", req.params.id)
   Comment.update(req.body, {
     where: {
       id: req.params.id

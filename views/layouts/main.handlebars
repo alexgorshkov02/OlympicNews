@@ -15,8 +15,8 @@
       <a href="#" class="brand-logo"><img src="progress-screenshots/olympiclogo.png" alt="">OlympicNews</a>
       <ul class="right">
         {{#if loggedIn}}
-        <li><a href="/logout">Dashboard</a></li>
-        <li><a href="/logout">Logout</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/logout" id="logout">Logout</a></li>
         {{else}}
         <li><a href="/login">Login</a></li>
         {{/if}}
@@ -48,7 +48,6 @@
   </div>
   
   {{#if loggedIn}}
-  <script src="/javascript/dashboard.js"></script>
   <script src="/javascript/logout.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
