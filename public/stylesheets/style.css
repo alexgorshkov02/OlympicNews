@@ -1,9 +1,12 @@
-/* * {
+ * {
     box-sizing: border-box;
+    border: 0;
+    padding: 0;
+    margin: 0;
 }
 
 
-section {
+/* section {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,27 +21,22 @@ header {
 footer {
     display: flex;
     justify-content: center;
-}
+} */
 
- .nav-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 20px;
-    background-color: #f4c20d;
-}  */
 
 body, html {
     height: 100%;
     padding: 0; 
     margin: 0; 
     font-family: sans-serif;
-    color: #f4c20d;
+    color: black;
 }
+ /* .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
 
 
-* {
-    border: 0;
-    padding: 0;
-    margin: 0;
-    }
+
+
