@@ -5,22 +5,42 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/stylesheets/style.css" />
-  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <title>Olympic News</title>
 </head>
 
 <body> 
-     <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Olympic News</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
+  {{!-- <div class="nav-wrapper indigo">
+    <div class="container">
+      <a href="#" class="brand-logo"><img src="progress-screenshots/olympiclogo.png" alt="">OlympicNews</a>
+      <ul class="right">
         {{#if loggedIn}}
         <li><a href="/logout">Dashboard</a></li>
         <li><a href="/logout">Logout</a></li>
         {{else}}
         <li><a href="/login">Login</a></li>
         {{/if}}
+      </ul>
     </div>
-  </nav>
+  </div> --}}
+<div class="container">
+  <nav>
+  <div class="nav-wrapper indigo">
+    <a href="#" class="brand-logo">Olympic News</a>
+
+    <ul id="" class="right">
+      {{#if loggedIn}}
+        <li><a href="/logout">Dashboard</a></li>
+        <li><a href="/logout">Logout</a></li>
+      {{else}}
+        <li><a href="/login">Login</a></li>
+      {{/if}}
+    </ul>
+  </div>
+</nav>
+</div>
+ 
+
 
     <main>
       {{{body}}}
@@ -30,6 +50,8 @@
   {{#if loggedIn}}
   <script src="/javascript/dashboard.js"></script>
   <script src="/javascript/logout.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
   {{/if}}
 </body>
 
