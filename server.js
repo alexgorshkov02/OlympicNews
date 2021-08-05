@@ -16,10 +16,10 @@ Handlebars.registerHelper("list", function (context) {
   for (let prop in context) {
     // Get the title to display
     const title = "<li>" + prop;
-
+{/* <span contenteditable="true"> safsas </span> */}
     // Get the comments for the title to display
     const comments = context[prop].map((el) => {
-      return `<li> ${el.comment} <button type="button" id="edit-${el.commentID}">Edit</button> <button type="button" id="remove-${el.commentID}">Remove</button></li>`;
+      return `<li> <p contenteditable="true" class = "comment" id="${el.commentID}"> ${el.comment} </p> <button type="button" class="remove-button" id="${el.commentID}">Remove</button></li>`;
     });
 
     // Merge the title and the comments
