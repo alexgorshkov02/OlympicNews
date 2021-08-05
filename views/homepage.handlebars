@@ -1,4 +1,4 @@
-   {{#each news}}
+   {{!-- {{#each news}}
         </br>
         <section>
 <div>
@@ -14,4 +14,24 @@ Description: {{description}}
 Comments: {{comment_count}}
 </div>
 </section>
+  {{/each}} --}}
+{{#each news}}
+</br>
+<div class="row">
+    <div class="col s6 m5">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{image_url}}">
+          <span class="card-title">{{title}}</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light indigo"><i class="material-icons">+</i></a>
+        </div>
+        <div class="card-content">
+          <p>{{description}}</p>
+          <p> Comments: {{comment_count}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
   {{/each}}
+
+
