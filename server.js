@@ -1,32 +1,15 @@
 const path = require("path");
 const express = require("express");
 const exphbs = require("express-handlebars");
-const hbs = exphbs.create({ extname: ".handlebars" });
+// const hbs = exphbs.create({ extname: ".handlebars" });
 const sequelize = require("./config/connection");
 const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
-const Handlebars = require("handlebars");
+// const Handlebars = require("handlebars");
+const helpers = require("./utils/helper.js");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-
-Handlebars.registerHelper("list", function (context) {
-  let result = "<ul>";
-
-  for (let prop in context) {
-    // Get the title to display
-    const title = "<li>" + prop;
-{/* <span contenteditable="true"> safsas </span> */}
-    // Get the comments for the title to display
-    const comments = context[prop].map((el) => {
-      return `<li> <p contenteditable="true" class = "comment" id="${el.commentID}"> ${el.comment} </p> <button type="button" class="remove-button" id="${el.commentID}">Remove</button></li>`;
-    });
-
-    // Merge the title and the comments
-    result += `${title} <ul> ${comments.join(" ")} </ul> </li> </br> </br>`;
-  }
-  return result + "</ul>";
-});
 
 const sess = {
   secret: "Super secret word",
@@ -40,7 +23,10 @@ const sess = {
 
 app.use(session(sess));
 
-app.engine("handlebars", hbs.engine);
+app.engine("handlebars", exphbs({
+  helpers
+}));
+
 app.set("view engine", "handlebars");
 
 app.use(express.json());

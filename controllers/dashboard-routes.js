@@ -36,7 +36,7 @@ router.get("/", withAuth, async (req, res) => {
     // Group the comments based on the titles
     let allNewsAndCommentsToDisplay = allNewsAndComments.reduce((r, a) => {
       r[a.newsTitle] = r[a.newsTitle] || [];
-      
+
       const commentWithID = {
         comment: a.comment,
         commentID: a.commentID,

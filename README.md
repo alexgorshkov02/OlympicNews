@@ -1,13 +1,37 @@
-# [Olympic News] (https://olympicnews.herokuapp.com/)
- 
-![index] (OlympicNews\progress-screenshots\Screen Shot 2021-08-05 at 6.53.37 PM.png?raw=true)
- 
+# Olympic News
+
+![license](https://img.shields.io/badge/license-MIT-blue?style=plastic)
+
+
+## Description
+  
 The website for all current Olympic News as it unfolds during the Olympic Games.
- 
-# The User Experience
- 
-The User is able to log into the site and view current Olympic Headlines that correlate to the date of the user's visit.  Users have the ability to comment on headlines, and those comments are stored to the User dashboard.
- 
+
+User is able to log into the site and view actual Olympic News. Users have the ability to comment on the news, and those comments are available in the User dashboard where the comments may be edited or removed.
+  
+  
+## Table of Contents
+
+* [Link](#link)
+* [Screenshot](#screenshot)
+* [License](#license)
+* [Modules Used](#modules-used)
+
+## Link
+
+https://olympicnews.herokuapp.com
+
+
+## Screenshot
+
+![Screenshot](./misc/screenshot.jpg?raw=true)
+
+
+## License
+
+MIT
+
+
 # Modules Used
  
 * [express] (https://expressjs.com/en/guide/routing.html)

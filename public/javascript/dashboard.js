@@ -40,11 +40,9 @@ async function removeComment(event) {
   }
 }
 
-const comments = document.getElementsByClassName("comment");
-Array.from(comments).forEach((comment) => {
-  comment.addEventListener("focusout", editComment);
-});
+document.querySelector(".news").addEventListener("focusout", editComment);
 
+// TODO: Make an edit button with additional form to edit a message. Can't be used together with editComment for the whole ".news" class because "click" will work instead of "focusout" every time
 const RemoveButtons = document.getElementsByClassName("remove-button");
 Array.from(RemoveButtons).forEach((RemoveButton) => {
   RemoveButton.addEventListener("click", removeComment);
