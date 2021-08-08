@@ -20,4 +20,3 @@ The User is able to log into the site and view current Olympic Headlines that co
 * [express-session] (https://www.npmjs.com/package/express-sessions)
 * [handlebars] (https://handlebarsjs.com/installation/)
 * [connect-session-sequelize] (https://www.npmjs.com/package/connect-session-sequelize)
- 
