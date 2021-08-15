@@ -7,12 +7,13 @@ const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 // const Handlebars = require("handlebars");
 const helpers = require("./utils/helper.js");
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 const sess = {
-  secret: "Super secret word",
+  secret: process.env.SECRET_WORD,
   cookie: {},
   resave: false,
   saveUninitialized: true,
