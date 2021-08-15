@@ -1,7 +1,7 @@
 const path = require("path");
 const express = require("express");
 const exphbs = require("express-handlebars");
-// const hbs = exphbs.create({ extname: ".handlebars" });
+// const hbs = exphbs.create({ extname: ".handlebars" }); 
 const sequelize = require("./config/connection");
 const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
@@ -40,6 +40,6 @@ app.get("/", function (req, res) {
 });
 
 // turn on connection to db and server
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => console.log("Now listening on PORT: " + PORT));
 });
