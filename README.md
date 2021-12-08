@@ -14,6 +14,8 @@ User is able to log into the site and view actual Olympic News. Users have the a
 
 * [Link](#link)
 * [Screenshot](#screenshot)
+* [Installation Instructions](#installation-instructions)
+* [Usage Information](#usage-information)
 * [License](#license)
 * [Modules Used](#modules-used)
 
@@ -26,11 +28,23 @@ https://olympicnews.herokuapp.com
 
 ![Screenshot](./misc/screenshot.jpg?raw=true)
 
+## Installation Instructions
+
+Precondition steps: Install a MySQL database server.
+
+Installation steps:
+1) Clone the code from this repository.
+2) Run "npm install" in the console from the app directory.
+3) Run "npm seeds" in the console from the app directory.
+
+## Usage Information
+
+Run "npm run start" in the console from the app directory to start the app.
+
 
 ## License
 
 MIT
-
 
 # Modules Used
  
